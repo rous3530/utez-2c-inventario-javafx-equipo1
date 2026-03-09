@@ -1,7 +1,7 @@
-package Controllers;
+package com.example.demotienda.Controllers;
 
-import com.example.integradora.Process.TableProcess;
-import com.example.integradora.Process.TableProcess.Usuario;
+import com.example.demotienda.Services.TableProcess;
+import com.example.demotienda.Services.TableProcess.Usuario;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -16,8 +16,7 @@ public class AddController {
     private ObservableList<Usuario> listaUsuarios;
     private final TableProcess procesador = new TableProcess();
 
-
-    public void setLista(ObservableList<Usuario> lista) {
+    public void setListaUsuarios(ObservableList<Usuario> lista) {
         this.listaUsuarios = lista;
     }
 

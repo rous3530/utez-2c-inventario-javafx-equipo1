@@ -1,7 +1,7 @@
-package Controllers;
+package com.example.demotienda.Controllers;
 
-import com.example.integradora.Process.TableProcess;
-import com.example.integradora.Process.TableProcess.Usuario;
+import com.example.demotienda.Services.TableProcess;
+import com.example.demotienda.Services.TableProcess.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -77,28 +77,27 @@ public class TableController {
     @FXML
     private void onAgregarClick() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/integradora/Views/add-view.fxml"));
+            // 1. Cargar el FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demotienda/Views/add-view.fxml"));
             Parent root = loader.load();
 
-            // ... configuración del controlador ...
+            // 2. OBTENER EL CONTROLADOR DEL HIJO (AddController)
+            AddController controller = loader.getController();
 
+            // 3. PASAR LA LISTA (Esto es lo que falta y causa el error)
+            controller.setListaUsuarios(this.listaUsuarios);
+
+            // 4. Configurar y mostrar el Stage
             Stage stage = new Stage();
-            stage.initStyle(StageStyle.TRANSPARENT); // <--- CAMBIA UNDECORATED POR TRANSPARENT
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root));
 
-            Scene scene = new Scene(root);
-
-            // ESTO ELIMINA EL CUADRO BLANCO QUE VES ATRÁS
-            scene.setFill(javafx.scene.paint.Color.TRANSPARENT);
-
-            stage.setScene(scene);
-
-            // Aplicar el efecto de fondo antes de mostrar
+            // Efecto de blur opcional si lo tienes
             mainContainer.setEffect(new GaussianBlur(10));
 
             stage.showAndWait();
 
-            // Quitar el efecto al cerrar
+            // Quitar efecto al cerrar
             mainContainer.setEffect(null);
 
         } catch (Exception e) {
@@ -111,7 +110,7 @@ public class TableController {
             // 1. Aplicamos el desenfoque al fondo (mainContainer)
             mainContainer.setEffect(new GaussianBlur(10));
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/integradora/Views/edit-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoTienda/Views/edit-view.fxml"));
             Parent root = loader.load();
 
             // 2. Pasamos el usuario seleccionado al controlador de edición
@@ -148,7 +147,7 @@ public class TableController {
                     // Obtenemos el objeto Usuario de la fila actual
                     Usuario seleccionado = getTableView().getItems().get(getIndex());
 
-                    // Llamamos al método que abre la ventana emergente
+                    // Llamamos al método que abre form
                     onEditarClick(seleccionado);
                 });
             }

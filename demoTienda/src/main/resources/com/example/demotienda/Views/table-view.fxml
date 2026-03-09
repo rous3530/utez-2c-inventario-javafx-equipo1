@@ -6,7 +6,7 @@
 <VBox fx:id="mainContainer"
         alignment="TOP_CENTER" spacing="15" style="-fx-background-color: #F4F4F4; -fx-padding: 20;"
       xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.integradora.Controllers.TableController">
+      fx:controller="com.example.demotienda.Controllers.TableController">
 
     <Label text="Gestión de Productos" style="-fx-text-fill: #4169E1; -fx-font-size: 22; -fx-font-weight: bold;" />
 

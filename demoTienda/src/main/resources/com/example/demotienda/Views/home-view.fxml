@@ -10,7 +10,7 @@
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.integradora.Controllers.HomeController"
+      fx:controller="com.example.demotienda.Controllers.HomeController"
       prefHeight="400.0" prefWidth="600.0">
 
     <padding>

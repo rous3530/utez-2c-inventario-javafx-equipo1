@@ -1,4 +1,4 @@
-package Services;
+package com.example.demotienda.Services;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 
 public class TableProcess {
 
-    private final String RUTA_ARCHIVO = "datos.txt";
+    private final String RUTA_ARCHIVO = "data/datos.txt";
 
     public static class Usuario {
         private final SimpleStringProperty id;

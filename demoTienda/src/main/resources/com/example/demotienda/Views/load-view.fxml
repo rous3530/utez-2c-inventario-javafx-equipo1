@@ -13,7 +13,7 @@
       style="-fx-background-color: #F8F9FA; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #DCDDE1; -fx-border-width: 2;"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.integradora.Controllers.LoadController"
+      fx:controller="com.example.demotienda.Controllers.LoadController"
       prefHeight="400.0" prefWidth="600.0">
 
     <padding>

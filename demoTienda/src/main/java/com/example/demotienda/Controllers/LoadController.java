@@ -1,6 +1,6 @@
-package Controllers;
+package com.example.demotienda.Controllers;
 
-import com.example.integradora.Process.LoadProcess;
+import com.example.demotienda.Services.LoadProcess;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;

@@ -1,7 +1,7 @@
-package Controllers;
+package com.example.demotienda.Controllers;
 
-import com.example.integradora.Process.TableProcess;
-import com.example.integradora.Process.TableProcess.Usuario;
+import com.example.demotienda.Services.TableProcess;
+import com.example.demotienda.Services.TableProcess.Usuario;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
