@@ -18,24 +18,28 @@ public class TableProcess {
         private final SimpleStringProperty id;
         private final SimpleStringProperty nombre;
         private final SimpleStringProperty costo;
+        private final SimpleStringProperty stock;
 
-        public Usuario(String id, String nombre, String costo) {
+        public Usuario(String id, String nombre, String costo, String stock) {
             this.id = new SimpleStringProperty(id);
             this.nombre = new SimpleStringProperty(nombre);
             this.costo = new SimpleStringProperty(costo);
+            this.stock = new SimpleStringProperty(stock);
         }
 
         public String getId() { return id.get(); }
         public String getNombre() { return nombre.get(); }
         public String getCosto() { return costo.get(); }
+        public String getStock() { return stock.get(); }
 
         public SimpleStringProperty idProperty() { return id; }
         public SimpleStringProperty nombreProperty() { return nombre; }
         public SimpleStringProperty costoProperty() { return costo; }
+        public SimpleStringProperty stockProperty() { return stock; }
 
         @Override
         public String toString() {
-            return getId() + "," + getNombre() + "," + getCosto();
+            return getId() + "," + getNombre() + "," + getCosto()+"," + getStock();
         }
     }
 
@@ -50,8 +54,8 @@ public class TableProcess {
                 String[] partes = linea.split(",");
 
                 // Solo agregar si la línea tiene exactamente las 2 partes (ID y Nombre)
-                if (partes.length == 3) { // Cambiar a 3
-                    lista.add(new Usuario(partes[0].trim(), partes[1].trim(), partes[2].trim()));
+                if (partes.length == 4) { // Cambiar a 3
+                    lista.add(new Usuario(partes[0].trim(), partes[1].trim(), partes[2].trim(), partes[3].trim()));
                 }
             }
         } catch (IOException e) {

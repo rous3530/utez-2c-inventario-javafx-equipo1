@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class EditController {
-    @FXML private TextField txtId, txtNombre, txtCosto;
+    @FXML private TextField txtId, txtNombre, txtCosto, txtStock;
     private Usuario usuarioSeleccionado;
     private final TableProcess procesador = new TableProcess();
 
@@ -17,6 +17,7 @@ public class EditController {
         txtId.setText(usuario.getId());
         txtNombre.setText(usuario.getNombre());
         txtCosto.setText(usuario.getCosto());
+        txtStock.setText(usuario.getStock());
     }
 
     @FXML
@@ -24,6 +25,7 @@ public class EditController {
         // Actualizamos los valores del objeto original (se refleja en la tabla automáticamente)
         usuarioSeleccionado.nombreProperty().set(txtNombre.getText());
         usuarioSeleccionado.costoProperty().set(txtCosto.getText());
+        usuarioSeleccionado.stockProperty().set(txtStock.getText());
 
         // Guardamos los cambios en el archivo TXT
         // Aquí pasamos la lista completa desde el TableController o llamamos al guardado

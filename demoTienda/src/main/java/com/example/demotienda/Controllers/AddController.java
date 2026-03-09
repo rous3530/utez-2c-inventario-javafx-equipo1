@@ -12,6 +12,7 @@ public class AddController {
     @FXML private TextField txtId;
     @FXML private TextField txtNombre;
     @FXML private TextField txtCosto;
+    @FXML private TextField txtStock;
 
     private ObservableList<Usuario> listaUsuarios;
     private final TableProcess procesador = new TableProcess();
@@ -25,10 +26,11 @@ public class AddController {
         String id = txtId.getText().trim();
         String nombre = txtNombre.getText().trim();
         String costo = txtCosto.getText().trim();
+        String stock = txtStock.getText().trim();
 
         if (!id.isEmpty() && !nombre.isEmpty() && !costo.isEmpty()) {
             // Creamos el nuevo objeto (id alfanumérico)
-            Usuario nuevo = new Usuario(id, nombre, costo);
+            Usuario nuevo = new Usuario(id, nombre, costo,stock);
 
             // Agregamos a la lista observable (se verá en la tabla de inmediato)
             listaUsuarios.add(nuevo);

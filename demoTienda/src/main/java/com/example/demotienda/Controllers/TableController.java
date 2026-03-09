@@ -30,6 +30,8 @@ public class TableController {
     @FXML
     private TableColumn<Usuario, String> colCosto;
     @FXML
+    private TableColumn<Usuario, String> colStock;
+    @FXML
     private TableColumn<Usuario, Void> colEditar;
     @FXML
     private TableColumn<Usuario, Void> colEliminar;
@@ -45,6 +47,7 @@ public class TableController {
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
+        colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
 
         configurarColumnaEditar();
         configurarColumnaEliminar();
