@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.integradora.Controllers.HomeController"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <padding>
+        <Insets bottom="20" right="20" left="20" top="20"/>
+    </padding>
+
+    <Label text="Formulario de ejemplo con Validaciones"/>
+
+    <Label text="Nombre: "></Label>
+    <TextField fx:id="txtNombre" promptText="Ingresa tu nombre completo"/>
+
+
+    <Label text="Contraseña: "></Label>
+    <TextField fx:id="txtContraseña" promptText="Ingresa tu edad"/>
+
+
+    <Button text="Iniciar sesion"/>
+
+    <Label fx:id="lblResultado"/>
+
+</VBox>
