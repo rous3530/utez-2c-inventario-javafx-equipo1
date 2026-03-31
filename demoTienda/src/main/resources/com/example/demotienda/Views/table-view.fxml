@@ -23,6 +23,7 @@
             <TableColumn style="-fx-alignment: CENTER-LEFT;" fx:id="colNombre" text="Producto" prefWidth="300" />
             <TableColumn style="-fx-alignment: CENTER-LEFT;" fx:id="colCosto" text="Costo" prefWidth="100" />
             <TableColumn style="-fx-alignment: CENTER-LEFT;" fx:id="colStock" text="Stock" prefWidth="100" />
+            <TableColumn style="-fx-alignment: CENTER-LEFT;" fx:id="colCategoria" text="Categoria" prefWidth="100" />
             <TableColumn style="-fx-alignment: CENTER;" fx:id="colEditar" text="Editar" prefWidth="100" />
             <TableColumn style="-fx-alignment: CENTER;" fx:id="colEliminar" text="Eliminar" prefWidth="100" />
         </columns>

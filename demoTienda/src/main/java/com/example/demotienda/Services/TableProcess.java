@@ -19,27 +19,31 @@ public class TableProcess {
         private final SimpleStringProperty nombre;
         private final SimpleStringProperty costo;
         private final SimpleStringProperty stock;
+        private final SimpleStringProperty categoria;
 
-        public Usuario(String id, String nombre, String costo, String stock) {
+        public Usuario(String id, String nombre, String costo, String stock,String categoria) {
             this.id = new SimpleStringProperty(id);
             this.nombre = new SimpleStringProperty(nombre);
             this.costo = new SimpleStringProperty(costo);
             this.stock = new SimpleStringProperty(stock);
+            this.categoria = new SimpleStringProperty(categoria);
         }
 
         public String getId() { return id.get(); }
         public String getNombre() { return nombre.get(); }
         public String getCosto() { return costo.get(); }
         public String getStock() { return stock.get(); }
+        public String getCategoria() { return categoria.get(); }
 
         public SimpleStringProperty idProperty() { return id; }
         public SimpleStringProperty nombreProperty() { return nombre; }
         public SimpleStringProperty costoProperty() { return costo; }
         public SimpleStringProperty stockProperty() { return stock; }
+        public SimpleStringProperty CategoriaProperty() { return categoria; }
 
         @Override
         public String toString() {
-            return getId() + "," + getNombre() + "," + getCosto()+"," + getStock();
+            return getId() + "," + getNombre() + "," + getCosto()+"," + getStock()+"," + getCategoria();
         }
     }
 
@@ -54,8 +58,8 @@ public class TableProcess {
                 String[] partes = linea.split(",");
 
                 // Solo agregar si la línea tiene exactamente las 2 partes (ID y Nombre)
-                if (partes.length == 4) { // Cambiar a 3
-                    lista.add(new Usuario(partes[0].trim(), partes[1].trim(), partes[2].trim(), partes[3].trim()));
+                if (partes.length == 5) {
+                    lista.add(new Usuario(partes[0].trim(), partes[1].trim(), partes[2].trim(), partes[3].trim(), partes[4].trim()));
                 }
             }
         } catch (IOException e) {
