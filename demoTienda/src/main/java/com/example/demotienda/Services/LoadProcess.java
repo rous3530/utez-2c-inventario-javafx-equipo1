@@ -18,7 +18,7 @@ public class LoadProcess {
             try {
                 stageActual.close();
 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demoTienda/Views/table-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demotienda/Views/table-view.fxml"));
                 Parent root = loader.load();
 
                 Stage nuevaStage = new Stage();

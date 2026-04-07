@@ -79,20 +79,6 @@ public class TableProcess {
         }
     }
 
-    public void modificarRegistro(ObservableList<Usuario> lista, Usuario usuarioModificado) {
-        // 1. Buscar y actualizar en la lista de la memoria
-        for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getId().equals(usuarioModificado.getId())) {
-                lista.set(i, usuarioModificado);
-                break;
-            }
-        }
-
-        // 2. Persistir los cambios en el archivo .txt
-        guardarEnArchivo(lista);
-        System.out.println("Registro actualizado: " + usuarioModificado.getNombre());
-    }
-
     public void eliminarRegistro(ObservableList<Usuario> lista, Usuario usuario) {
         lista.remove(usuario);
         guardarEnArchivo(lista); // Persistir el cambio

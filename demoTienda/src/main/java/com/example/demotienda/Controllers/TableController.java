@@ -4,14 +4,12 @@ import com.example.demotienda.Services.TableProcess;
 import com.example.demotienda.Services.TableProcess.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.layout.VBox;
@@ -39,10 +37,17 @@ public class TableController {
     private TableColumn<Usuario, Void> colEliminar;
 
     @FXML
+    private TextField txtId; // El campo pequeño para ID
+    @FXML
+    private TextField txtNombre; // El campo largo para Nombre
+
+    @FXML
     private VBox mainContainer;
 
     private final TableProcess procesador = new TableProcess();
     private final ObservableList<Usuario> listaUsuarios = FXCollections.observableArrayList();
+
+    private FilteredList<Usuario> listaFiltrada;
 
     @FXML
     public void initialize() {
@@ -50,13 +55,29 @@ public class TableController {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colCosto.setCellValueFactory(new PropertyValueFactory<>("costo"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        colCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));
+        colCategoria.setCellValueFactory(cellData -> cellData.getValue().CategoriaProperty());
 
         configurarColumnaEditar();
         configurarColumnaEliminar();
 
+        // 1. Cargamos los datos originales
         procesador.cargarDatosDesdeArchivo(listaUsuarios);
-        tablaDatos.setItems(listaUsuarios);
+
+        // 2. Inicializamos la FilteredList envolviendo la lista original
+        // El predicado p -> true significa que al inicio muestra todo
+        listaFiltrada = new FilteredList<>(listaUsuarios, p -> true);
+
+        // 3. Configuramos los listeners para los campos de texto (Filtro en tiempo real)
+        txtId.textProperty().addListener((observable, oldValue, newValue) -> {
+            actualizarFiltro();
+        });
+
+        txtNombre.textProperty().addListener((observable, oldValue, newValue) -> {
+            actualizarFiltro();
+        });
+
+        // 4. IMPORTANTE: Asignamos la lista FILTRADA a la tabla
+        tablaDatos.setItems(listaFiltrada);
     }
 
     private void configurarColumnaEliminar() {
@@ -169,6 +190,25 @@ public class TableController {
                     setGraphic(btnEdit);
                 }
             }
+        });
+    }
+
+    private void actualizarFiltro() {
+        listaFiltrada.setPredicate(usuario -> {
+            // Si los campos están vacíos, mostramos el registro
+            String filtroId = txtId.getText() == null ? "" : txtId.getText().toLowerCase().trim();
+            String filtroNombre = txtNombre.getText() == null ? "" : txtNombre.getText().toLowerCase().trim();
+
+            if (filtroId.isEmpty() && filtroNombre.isEmpty()) {
+                return true;
+            }
+
+            // Verificamos coincidencias (puedes usar .startsWith o .contains)
+            boolean coincideId = usuario.getId().toLowerCase().contains(filtroId);
+            boolean coincideNombre = usuario.getNombre().toLowerCase().contains(filtroNombre);
+
+            // Retorna verdadero si ambos criterios se cumplen (o están vacíos)
+            return coincideId && coincideNombre;
         });
     }
 }
