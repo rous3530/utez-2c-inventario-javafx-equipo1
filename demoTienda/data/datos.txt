@@ -1,0 +1,4 @@
+P001,Leche Entera,25.50,50,Lácteos
+P002,Pan Integral,32.00,20,Panadería
+P003,Arroz 1kg,18.50,100,Abarrotes
+P004,Jabón de Trastes,15.00,30,Limpieza
